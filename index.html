@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival & Birthday Banner Generator</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 25px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e293b;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* 1. Festival Selection Grid */
+        .festival-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .festival-card {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            padding: 20px 15px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .festival-card:hover {
+            transform: translateY(-3px);
+            opacity: 0.95;
+        }
+
+        .festival-card i {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .festival-card h4 {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* 2. Input Form Section */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+        }
+
+        .file-box {
+            border: 2px dashed #cbd5e1;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #f8fafc;
+        }
+
+        .file-box p {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .file-box input {
+            display: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #6366f1;
+            border: none;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #4f46e5;
+        }
+
+        /* 3. Generated Banner Preview Section */
+        .banner-preview-box {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .banner-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .user-photo-frame {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background: #fff;
+        }
+
+        .user-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name-display {
+            font-size: 16px;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 6px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .whatsapp-btn {
+            background: #22c55e;
+        }
+        .whatsapp-btn:hover {
+            background: #16a34a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 1. HOME / FESTIVAL SELECTION SECTION -->
+        <div id="selection-section">
+            <h2>🎉 Choose Festival / Occasion</h2>
+            <div class="festival-grid">
+                <div class="festival-card" onclick="selectFestival('Diwali Special', 'linear-gradient(135deg, #f59e0b, #dc2626)', '🪔')">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                    <h4>Diwali</h4>
+                </div>
+                <div class="festival-card" onclick="selectFestival('Holi Special', 'linear-gradient(135deg, #ec4899, #8b5cf6)', '🎨')">
+                    <i class="fa-solid fa-palette"></i>
+                    <h4>Holi</h4>
+                </div>
+                <div class="festival-card" onclick="selectFestival('Independence Day', 'linear-gradient(135deg, #f97316, #10b981)', '🇮🇳')">
+                    <i class="fa-solid fa-flag"></i>
+                    <h4>Independence</h4>
+                </div>
+                <div class="festival-card" onclick="selectFestival('Happy New Year', 'linear-gradient(135deg, #3b82f6, #1d4ed8)', '✨')">
+                    <i class="fa-solid fa-champagne-glasses"></i>
+                    <h4>New Year</h4>
+                </div>
+                <div class="festival-card" onclick="selectFestival('Birthday Celebration', 'linear-gradient(135deg, #10b981, #047857)', '🎂')" style="grid-column: span 2;">
+                    <i class="fa-solid fa-cake-candles"></i>
+                    <h4>Birthday Special</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. DETAILS INPUT FORM SECTION -->
+        <div id="form-section" class="hidden">
+            <a class="back-link" onclick="goBackToSelection()"><i class="fa-solid fa-arrow-left"></i> Back to Festivals</a>
+            <h2 id="form-heading">Create Banner</h2>
+            
+            <form id="bannerForm">
+                <div class="form-group">
+                    <label>Aapka Naam (Your Name)</label>
+                    <input type="text" id="userName" placeholder="Jaise: Rohit Sharma" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Aapki Photo (Your Photo)</label>
+                    <div class="file-box" onclick="document.getElementById('userPhoto').click()">
+                        <i class="fa-solid fa-image fa-2x" style="color: #6366f1;"></i>
+                        <p id="file-label">Photo Upload karne ke liye click karein</p>
+                        <input type="file" id="userPhoto" accept="image/*" required onchange="previewImageName()">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Generate Banner</button>
+            </form>
+        </div>
+
+        <!-- 3. GENERATED BANNER PREVIEW SECTION -->
+        <div id="preview-section" class="hidden">
+            <h2>✨ Aapka Banner Taiyar Hai!</h2>
+            
+            <div class="banner-preview-box" id="bannerCard">
+                <div class="banner-overlay"></div>
+                <div class="banner-content">
+                    <div class="banner-title" id="preview-title">Diwali Special</div>
+                    <div class="user-photo-frame">
+                        <img id="preview-img" src="" alt="User Photo">
+                    </div>
+                    <div class="user-name-display" id="preview-name">Rohit Sharma</div>
+                </div>
+            </div>
+
+            <button class="btn whatsapp-btn" onclick="shareOnWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+            </button>
+            <button class="btn" style="background: #475569; margin-top: 8px;" onclick="goBackToSelection()">Create Another</button>
+        </div>
+    </div>
+
+    <script>
+        const selectionSection = document.getElementById('selection-section');
+        const formSection = document.getElementById('form-section');
+        const previewSection = document.getElementById('preview-section');
+        const formHeading = document.getElementById('form-heading');
+        const bannerCard = document.getElementById('bannerCard');
+        const previewTitle = document.getElementById('preview-title');
+        const previewName = document.getElementById('preview-name');
+        const previewImg = document.getElementById('preview-img');
+        const bannerForm = document.getElementById('bannerForm');
+        
+        let selectedFestivalName = "";
+        let selectedBgGradient = "";
+        let uploadedImageUrl = "";
+
+        function selectFestival(name, gradient, emoji) {
+            selectedFestivalName = emoji + " " + name;
+            selectedBgGradient = gradient;
+            
+            formHeading.innerText = name + " Banner";
+            selectionSection.classList.add('hidden');
+            formSection.classList.remove('hidden');
+        }
+
+        function goBackToSelection() {
+            formSection.classList.add('hidden');
+            previewSection.classList.add('hidden');
+            selectionSection.classList.remove('hidden');
+            bannerForm.reset();
+            document.getElementById('file-label').innerText = "Photo Upload karne ke liye click karein";
+        }
+
+        function previewImageName() {
+            const input = document.getElementById('userPhoto');
+            const label = document.getElementById('file-label');
+            if(input.files && input.files[0]) {
+                label.innerText = "Selected: " + input.files[0].name;
+                label.style.color = "#16a34a";
+
+                // Read image file to display preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImageUrl = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        bannerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('userName').value;
+
+            // Set data to banner preview card
+            previewTitle.innerText = selectedFestivalName;
+            previewName.innerText = name;
+            bannerCard.style.background = selectedBgGradient;
+            if(uploadedImageUrl) {
+                previewImg.src = uploadedImageUrl;
+            }
+
+            // Switch to preview section
+            formSection.classList.add('hidden');
+            previewSection.classList.remove('hidden');
+        });
+
+        function shareOnWhatsApp() {
+            const text = `Maine abhi apna naya festival banner banaya hai! Aap bhi apna khud ka banner yahan bana sakte hain: ${window.location.href}`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

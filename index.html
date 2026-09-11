@@ -2,183 +2,426 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Designer Festival & Birthday Banner</title>
-    <!-- Google Fonts & FontAwesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UtsavAI - Premium Festival Celebration App</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        :root {
+            --bg-base: #090d16;
+            --surface: #111827;
+            --surface-glass: rgba(17, 24, 39, 0.7);
+            --border-color: rgba(251, 191, 36, 0.2);
+            --primary-gold: #fbbf24;
+            --primary-gold-dark: #d97706;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: #090d16;
-            color: #fff;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 15px;
+            padding: 12px;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .container {
+        /* Animated Background Glowing Orbs */
+        .bg-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+            animation: floatGlow 8s ease-in-out infinite alternate;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            bottom: -100px;
+            right: -100px;
+            z-index: 0;
+            animation: floatGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
+        }
+
+        .app-container {
             width: 100%;
-            max-width: 450px;
-            background: #111827;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            max-width: 440px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             overflow: hidden;
-            padding: 25px;
+            position: relative;
+            z-index: 1;
+            padding: 24px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hidden {
             display: none !important;
         }
 
-        h2 {
+        /* HERO HEADER SECTION */
+        .hero-header {
             text-align: center;
-            color: #fbbf24;
-            font-size: 20px;
-            margin-bottom: 20px;
-            font-family: 'Cinzel', serif;
+            margin-bottom: 24px;
+            animation: slideDown 0.6s ease-out;
         }
 
-        /* 1. Festival Grid */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .brand-logo-svg {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #fbbf24, #d97706);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(251, 191, 36, 0.4);
+            animation: pulseLogo 3s infinite;
+        }
+
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(251, 191, 36, 0.7); }
+        }
+
+        .brand-logo-svg i {
+            font-size: 18px;
+            color: #090d16;
+        }
+
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 30%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-tagline {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title span {
+            font-size: 11px;
+            color: var(--primary-gold);
+            font-weight: 500;
+            background: rgba(251, 191, 36, 0.1);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        /* FESTIVAL CARDS GRID */
         .festival-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .festival-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 20px 15px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 18px;
-            text-align: center;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .festival-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--card-accent, #fbbf24);
+            opacity: 0.7;
+            transition: var(--transition);
         }
 
         .festival-card:hover {
-            border-color: #fbbf24;
-            background: rgba(251, 191, 36, 0.08);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(251, 191, 36, 0.4);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
-        .festival-card i {
-            font-size: 30px;
-            margin-bottom: 8px;
-            color: #fbbf24;
+        .festival-card:active {
+            transform: scale(0.98);
         }
 
-        .festival-card h4 {
-            font-size: 14px;
+        .card-icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: var(--icon-bg, rgba(251, 191, 36, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--card-accent, #fbbf24);
+            flex-shrink: 0;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
         }
 
-        /* 2. Input Form */
+        .card-info {
+            flex: 1;
+        }
+
+        .card-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .card-info p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .card-arrow {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 11px;
+            transition: var(--transition);
+        }
+
+        .festival-card:hover .card-arrow {
+            background: var(--card-accent, #fbbf24);
+            color: #090d16;
+            transform: translateX(3px);
+        }
+
+        /* INPUT FORM SECTION */
         .back-link {
-            display: inline-block;
-            margin-bottom: 15px;
-            color: #fbbf24;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 16px;
+            color: var(--primary-gold);
             text-decoration: none;
             font-size: 13px;
+            font-weight: 500;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+            transform: translateX(-3px);
+        }
+
+        .form-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 6px;
-            font-size: 13px;
-            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .form-group input {
             width: 100%;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
             color: #fff;
             font-size: 14px;
             outline: none;
+            transition: var(--transition);
         }
 
         .form-group input:focus {
-            border-color: #fbbf24;
+            border-color: var(--primary-gold);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
         }
 
         .file-box {
-            border: 2px dashed rgba(251, 191, 36, 0.4);
-            padding: 15px;
+            border: 2px dashed rgba(251, 191, 36, 0.3);
+            padding: 20px;
             text-align: center;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(251, 191, 36, 0.02);
+            transition: var(--transition);
+        }
+
+        .file-box:hover {
+            background: rgba(251, 191, 36, 0.05);
+            border-color: var(--primary-gold);
+        }
+
+        .file-box i {
+            font-size: 24px;
+            color: var(--primary-gold);
+            margin-bottom: 8px;
         }
 
         .file-box p {
             font-size: 12px;
-            color: #94a3b8;
-            margin-top: 5px;
+            color: var(--text-muted);
         }
 
         .file-box input {
             display: none;
         }
 
-        .btn {
+        .btn-primary {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: linear-gradient(135deg, #f59e0b, #d97706);
             border: none;
-            color: white;
+            color: #090d16;
             font-size: 15px;
-            font-weight: 600;
-            border-radius: 12px;
+            font-weight: 700;
+            border-radius: 14px;
             cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            transition: var(--transition);
+            margin-top: 8px;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        /* 3. PRO DESIGNER BANNER PREVIEW */
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* PRO DESIGNER BANNER PREVIEW */
+        .preview-title-main {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            text-align: center;
+            color: var(--primary-gold);
+            margin-bottom: 16px;
+        }
+
         .banner-preview-box {
             position: relative;
             width: 100%;
-            height: 420px;
+            height: 400px;
             border-radius: 20px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 22px 16px;
             text-align: center;
             color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #1e1b4b, #311042, #0f172a);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            margin-bottom: 16px;
             border: 3px solid #fbbf24;
+            background-size: cover;
+            background-position: center;
         }
 
-        /* Designer Background Graphics & Borders */
         .banner-preview-box::before {
             content: '';
             position: absolute;
             top: 6px; left: 6px; right: 6px; bottom: 6px;
             border: 1px dashed rgba(251, 191, 36, 0.6);
-            border-radius: 15px;
+            border-radius: 14px;
             pointer-events: none;
             z-index: 1;
         }
@@ -186,28 +429,32 @@
         .banner-header-art {
             position: relative;
             z-index: 2;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #fde047;
-            font-weight: 600;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(253, 224, 71, 0.3);
         }
 
-        .banner-title-main {
+        .banner-title-card {
             position: relative;
             z-index: 2;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             font-family: 'Cinzel', serif;
             color: #fff;
-            text-shadow: 0 2px 8px rgba(251, 191, 36, 0.6);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .user-photo-frame {
             position: relative;
             z-index: 2;
-            width: 130px;
-            height: 130px;
+            width: 125px;
+            height: 125px;
             border-radius: 50%;
             border: 4px solid #fbbf24;
             overflow: hidden;
@@ -224,84 +471,170 @@
         .user-name-banner {
             position: relative;
             z-index: 2;
-            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.8), transparent);
             width: 100%;
-            padding: 10px 0;
+            padding: 8px 0;
         }
 
         .user-name-display {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 700;
             color: #fbbf24;
             font-family: 'Cinzel', serif;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
             letter-spacing: 1px;
         }
 
-        .whatsapp-btn {
+        .btn-whatsapp {
             background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            box-shadow: 0 12px 25px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            margin-top: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Confetti Canvas for Birthday */
+        #confetti-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 999;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- 1. SELECTION -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="app-container">
+        <!-- 1. HERO HEADER & FESTIVAL SELECTION -->
         <div id="selection-section">
-            <h2>🎨 Pro Designer Banners</h2>
+            <header class="hero-header">
+                <div class="brand-box">
+                    <div class="brand-logo-svg">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="brand-name">UtsavAI</div>
+                </div>
+                <div class="hero-tagline">Celebrate Every Moment ✨</div>
+                <div class="hero-subtitle">Create gorgeous custom festival banners in 1 tap</div>
+            </header>
+
+            <div class="section-title">
+                Select Occasion <span>2026 Edition</span>
+            </div>
+
             <div class="festival-grid">
-                <div class="festival-card" onclick="selectFestival('DIWALI SPECIAL', '🪔', 'Shubh Deepawali')">
-                    <i class="fa-solid fa-fire-flame-curved"></i>
-                    <h4>Diwali</h4>
+                <!-- Diwali -->
+                <div class="festival-card" style="--card-accent: #f59e0b; --icon-bg: rgba(245, 158, 11, 0.12);" onclick="selectFestival('DIWALI SPECIAL', '🪔', 'Shubh Deepawali', 'linear-gradient(135deg, #78350f, #451a03, #1e1b4b)')">
+                    <div class="card-icon-box">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Diwali Special</h3>
+                        <p>Shubh Deepawali & Laxmi Puja</p>
+                    </div>
+                    <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
-                <div class="festival-card" onclick="selectFestival('HOLI SPECIAL', '🎨', 'Happy Rang Panchami')">
-                    <i class="fa-solid fa-palette"></i>
-                    <h4>Holi</h4>
+
+                <!-- Holi -->
+                <div class="festival-card" style="--card-accent: #ec4899; --icon-bg: rgba(236, 72, 153, 0.12);" onclick="selectFestival('HOLI SPECIAL', '🎨', 'Happy Rang Panchami', 'linear-gradient(135deg, #831843, #500724, #1e1b4b)')">
+                    <div class="card-icon-box">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Holi Celebration</h3>
+                        <p>Colors of Joy & Happiness</p>
+                    </div>
+                    <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
-                <div class="festival-card" onclick="selectFestival('INDEPENDENCE DAY', '🇮🇳', 'Jai Hind')">
-                    <i class="fa-solid fa-flag"></i>
-                    <h4>Independence</h4>
+
+                <!-- Independence Day -->
+                <div class="festival-card" style="--card-accent: #10b981; --icon-bg: rgba(16, 185, 129, 0.12);" onclick="selectFestival('INDEPENDENCE DAY', '🇮🇳', 'Jai Hind • Vande Mataram', 'linear-gradient(135deg, #14532d, #064e3b, #0f172a)')">
+                    <div class="card-icon-box">
+                        <i class="fa-solid fa-flag"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Independence Day</h3>
+                        <p>Proud Indian Heritage</p>
+                    </div>
+                    <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
-                <div class="festival-card" onclick="selectFestival('NEW YEAR', '✨', 'Welcome 2026')">
-                    <i class="fa-solid fa-champagne-glasses"></i>
-                    <h4>New Year</h4>
+
+                <!-- New Year -->
+                <div class="festival-card" style="--card-accent: #3b82f6; --icon-bg: rgba(59, 130, 246, 0.12);" onclick="selectFestival('NEW YEAR', '✨', 'Welcome New Year', 'linear-gradient(135deg, #1e3a8a, #172554, #0f172a)')">
+                    <div class="card-icon-box">
+                        <i class="fa-solid fa-champagne-glasses"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>New Year</h3>
+                        <p>Fresh Beginnings & Success</p>
+                    </div>
+                    <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
-                <div class="festival-card" onclick="selectFestival('BIRTHDAY SPECIAL', '🎂', 'Happy Birthday')" style="grid-column: span 2;">
-                    <i class="fa-solid fa-cake-candles"></i>
-                    <h4>Birthday Celebration</h4>
+
+                <!-- Birthday Special -->
+                <div class="festival-card" style="--card-accent: #8b5cf6; --icon-bg: rgba(139, 92, 246, 0.12);" onclick="selectFestival('BIRTHDAY SPECIAL', '🎂', 'Happy Birthday To You', 'linear-gradient(135deg, #581c87, #3b0764, #0f172a)')">
+                    <div class="card-icon-box">
+                        <i class="fa-solid fa-cake-candles"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Birthday Special</h3>
+                        <p>Make Your Day Memorable</p>
+                    </div>
+                    <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
             </div>
         </div>
 
-        <!-- 2. FORM -->
+        <!-- 2. DETAILS INPUT FORM SECTION -->
         <div id="form-section" class="hidden">
-            <a class="back-link" onclick="goBackToSelection()"><i class="fa-solid fa-arrow-left"></i> Back</a>
-            <h2 id="form-heading">Enter Details</h2>
+            <a class="back-link" onclick="goBackToSelection()"><i class="fa-solid fa-arrow-left"></i> Choose Another Occasion</a>
+            <div class="form-heading" id="form-heading-title">Customize Banner</div>
             
             <form id="bannerForm">
                 <div class="form-group">
-                    <label>Aapka Naam</label>
-                    <input type="text" id="userName" placeholder="Jaise: Mahendra" required>
+                    <label>Aapka Naam (Your Name)</label>
+                    <input type="text" id="userName" placeholder="e.g. Mahendra / Rohit" required autocomplete="off">
                 </div>
+
                 <div class="form-group">
-                    <label>Aapki Photo</label>
+                    <label>Aapki Photo (Upload Image)</label>
                     <div class="file-box" onclick="document.getElementById('userPhoto').click()">
-                        <i class="fa-solid fa-image fa-2x" style="color: #fbbf24;"></i>
-                        <p id="file-label">Photo Upload karne ke liye click karein</p>
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p id="file-label">Tap to upload your clear photo</p>
                         <input type="file" id="userPhoto" accept="image/*" required onchange="previewImageName()">
                     </div>
                 </div>
-                <button type="submit" class="btn">Generate Pro Banner</button>
+
+                <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Pro Banner
+                </button>
             </form>
         </div>
 
-        <!-- 3. PREVIEW -->
+        <!-- 3. GENERATED BANNER PREVIEW SECTION -->
         <div id="preview-section" class="hidden">
-            <h2>🔥 Pro Banner Ready!</h2>
+            <div class="preview-title-main">🎉 Your Pro Banner is Ready!</div>
             
             <div class="banner-preview-box" id="bannerCard">
                 <div class="banner-header-art" id="banner-tagline">Shubh Deepawali</div>
-                <div class="banner-title-main" id="preview-title">DIWALI SPECIAL</div>
+                <div class="banner-title-card" id="preview-title">DIWALI SPECIAL</div>
                 
                 <div class="user-photo-frame">
                     <img id="preview-img" src="" alt="User Photo">
@@ -312,10 +645,12 @@
                 </div>
             </div>
 
-            <button class="btn whatsapp-btn" onclick="shareOnWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+            <button class="btn-primary btn-whatsapp" onclick="shareOnWhatsApp()">
+                <i class="fa-brands fa-whatsapp fa-lg"></i> Share on WhatsApp Status
             </button>
-            <button class="btn" style="background: rgba(255,255,255,0.1); margin-top: 8px;" onclick="goBackToSelection()">Create Another</button>
+            <button class="btn-primary btn-secondary" onclick="goBackToSelection()">
+                <i class="fa-solid fa-rotate-left"></i> Create Another
+            </button>
         </div>
     </div>
 
@@ -323,21 +658,27 @@
         const selectionSection = document.getElementById('selection-section');
         const formSection = document.getElementById('form-section');
         const previewSection = document.getElementById('preview-section');
-        const formHeading = document.getElementById('form-heading');
+        const formHeadingTitle = document.getElementById('form-heading-title');
         const previewTitle = document.getElementById('preview-title');
         const bannerTagline = document.getElementById('banner-tagline');
         const previewName = document.getElementById('preview-name');
         const previewImg = document.getElementById('preview-img');
+        const bannerCard = document.getElementById('bannerCard');
         const bannerForm = document.getElementById('bannerForm');
         
         let selectedCategory = "";
         let selectedTagline = "";
+        let selectedBgGradient = "";
         let uploadedImageUrl = "";
+        let isBirthday = false;
 
-        function selectFestival(category, emoji, tagline) {
+        function selectFestival(category, emoji, tagline, gradient) {
             selectedCategory = emoji + " " + category;
             selectedTagline = tagline;
-            formHeading.innerText = category;
+            selectedBgGradient = gradient;
+            isBirthday = category.includes('BIRTHDAY');
+
+            formHeadingTitle.innerText = "Create " + category;
             selectionSection.classList.add('hidden');
             formSection.classList.remove('hidden');
         }
@@ -347,7 +688,8 @@
             previewSection.classList.add('hidden');
             selectionSection.classList.remove('hidden');
             bannerForm.reset();
-            document.getElementById('file-label').innerText = "Photo Upload karne ke liye click karein";
+            document.getElementById('file-label').innerText = "Tap to upload your clear photo";
+            stopConfetti();
         }
 
         function previewImageName() {
@@ -367,22 +709,75 @@
 
         bannerForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('userName').value;
+            const name = document.getElementById('userName').value.trim();
+            if(!name) return;
 
             previewTitle.innerText = selectedCategory;
             bannerTagline.innerText = selectedTagline;
             previewName.innerText = name;
+            bannerCard.style.background = selectedBgGradient;
+
             if(uploadedImageUrl) {
                 previewImg.src = uploadedImageUrl;
             }
 
             formSection.classList.add('hidden');
             previewSection.classList.remove('hidden');
+
+            if(isBirthday) {
+                startConfetti();
+            }
         });
 
         function shareOnWhatsApp() {
-            const text = `Maine apna professional designer banner banaya hai! Aap bhi yahan bana sakte hain: ${window.location.href}`;
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+            const text = `Check out my custom festival banner created on UtsavAI! Create yours here: ${window.location.href}`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Lightweight Confetti Animation for Birthday
+        let confettiInterval;
+        function startConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#f59e0b', '#ec4899', '#3b82f6', '#10b981', '#8b5cf6'];
+
+            for (let i = 0; i < 70; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 4,
+                    dx: Math.random() * 2 - 1,
+                    dy: Math.random() * 3 + 2,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p) => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    if (p.y > canvas.height) p.y = -10;
+                });
+            }
+
+            confettiInterval = setInterval(draw, 20);
+        }
+
+        function stopConfetti() {
+            clearInterval(confettiInterval);
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            if(ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
     </script>
 </body>

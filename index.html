@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UtsavAI - Premium Festival Celebration App</title>
+    <title>UtsavAI - Pro Festival Poster Generator</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-base: #090d16;
-            --surface: #111827;
-            --surface-glass: rgba(17, 24, 39, 0.7);
-            --border-color: rgba(251, 191, 36, 0.2);
+            --bg-base: #060913;
+            --surface: #0f172a;
+            --surface-glass: rgba(15, 23, 42, 0.85);
+            --border-color: rgba(251, 191, 36, 0.3);
             --primary-gold: #fbbf24;
             --primary-gold-dark: #d97706;
             --text-main: #f8fafc;
@@ -42,12 +42,12 @@
             position: relative;
         }
 
-        /* Animated Background Glowing Orbs */
+        /* Ambient Glow Backgrounds */
         .bg-glow {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, rgba(0,0,0,0) 70%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.18) 0%, rgba(0,0,0,0) 70%);
             top: -100px;
             left: -100px;
             z-index: 0;
@@ -56,9 +56,9 @@
 
         .bg-glow-2 {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0,0,0,0) 70%);
             bottom: -100px;
             right: -100px;
             z-index: 0;
@@ -78,7 +78,7 @@
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border-color);
             border-radius: 28px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
             overflow: hidden;
             position: relative;
             z-index: 1;
@@ -95,28 +95,22 @@
             display: none !important;
         }
 
-        /* HERO HEADER SECTION */
+        /* HERO HEADER */
         .hero-header {
             text-align: center;
             margin-bottom: 24px;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-15px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .brand-box {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .brand-logo-svg {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #fbbf24, #d97706);
             border-radius: 12px;
             display: flex;
@@ -133,7 +127,7 @@
 
         .brand-logo-svg i {
             font-size: 18px;
-            color: #090d16;
+            color: #060913;
         }
 
         .brand-name {
@@ -143,44 +137,40 @@
             background: linear-gradient(135deg, #fff 30%, #fbbf24 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 0.5px;
         }
 
         .hero-tagline {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--primary-gold);
             margin-bottom: 4px;
-            letter-spacing: 0.3px;
         }
 
         .hero-subtitle {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
         }
 
-        /* SECTION TITLES */
         .section-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .section-title span {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--primary-gold);
-            font-weight: 500;
             background: rgba(251, 191, 36, 0.1);
             padding: 3px 10px;
             border-radius: 20px;
             border: 1px solid rgba(251, 191, 36, 0.2);
         }
 
-        /* FESTIVAL CARDS GRID */
+        /* FESTIVAL CARDS */
         .festival-grid {
             display: flex;
             flex-direction: column;
@@ -191,14 +181,13 @@
             position: relative;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
+            border-radius: 16px;
             padding: 14px 16px;
             display: flex;
             align-items: center;
             gap: 14px;
             cursor: pointer;
             transition: var(--transition);
-            overflow: hidden;
         }
 
         .festival-card::before {
@@ -206,8 +195,8 @@
             position: absolute;
             top: 0; left: 0; width: 4px; height: 100%;
             background: var(--card-accent, #fbbf24);
-            opacity: 0.7;
-            transition: var(--transition);
+            opacity: 0.8;
+            border-radius: 4px 0 0 4px;
         }
 
         .festival-card:hover {
@@ -217,22 +206,17 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
-        .festival-card:active {
-            transform: scale(0.98);
-        }
-
         .card-icon-box {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             background: var(--icon-bg, rgba(251, 191, 36, 0.1));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 19px;
             color: var(--card-accent, #fbbf24);
             flex-shrink: 0;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
         }
 
         .card-info {
@@ -240,83 +224,77 @@
         }
 
         .card-info h3 {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: #fff;
             margin-bottom: 2px;
         }
 
         .card-info p {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
         }
 
         .card-arrow {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
-            font-size: 11px;
+            font-size: 10px;
             transition: var(--transition);
         }
 
         .festival-card:hover .card-arrow {
             background: var(--card-accent, #fbbf24);
-            color: #090d16;
+            color: #060913;
             transform: translateX(3px);
         }
 
-        /* INPUT FORM SECTION */
+        /* FORM SECTION */
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             color: var(--primary-gold);
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .back-link:hover {
-            opacity: 0.8;
-            transform: translateX(-3px);
         }
 
         .form-heading {
             font-family: 'Cinzel', serif;
             font-size: 18px;
             color: #fff;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             text-align: center;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 6px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 13px 15px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
+            border-radius: 12px;
             color: #fff;
             font-size: 14px;
             outline: none;
@@ -326,14 +304,13 @@
         .form-group input:focus {
             border-color: var(--primary-gold);
             background: rgba(255, 255, 255, 0.07);
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
         }
 
         .file-box {
-            border: 2px dashed rgba(251, 191, 36, 0.3);
-            padding: 20px;
+            border: 2px dashed rgba(251, 191, 36, 0.4);
+            padding: 18px;
             text-align: center;
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
             background: rgba(251, 191, 36, 0.02);
             transition: var(--transition);
@@ -347,7 +324,7 @@
         .file-box i {
             font-size: 24px;
             color: var(--primary-gold);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .file-box p {
@@ -361,17 +338,17 @@
 
         .btn-primary {
             width: 100%;
-            padding: 14px;
+            padding: 13px;
             background: linear-gradient(135deg, #f59e0b, #d97706);
             border: none;
-            color: #090d16;
+            color: #060913;
             font-size: 15px;
             font-weight: 700;
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
             transition: var(--transition);
-            margin-top: 8px;
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+            margin-top: 6px;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -380,85 +357,96 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
         }
 
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-
-        /* PRO DESIGNER BANNER PREVIEW */
+        /* CINEMATIC POSTER PREVIEW */
         .preview-title-main {
             font-family: 'Cinzel', serif;
-            font-size: 18px;
+            font-size: 17px;
             text-align: center;
             color: var(--primary-gold);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .banner-preview-box {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 430px;
             border-radius: 20px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 22px 16px;
+            padding: 20px 14px;
             text-align: center;
             color: white;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             margin-bottom: 16px;
             border: 3px solid #fbbf24;
             background-size: cover;
             background-position: center;
         }
 
+        /* Cinematic Inner Border Frame */
         .banner-preview-box::before {
             content: '';
             position: absolute;
-            top: 6px; left: 6px; right: 6px; bottom: 6px;
-            border: 1px dashed rgba(251, 191, 36, 0.6);
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 1px dashed rgba(251, 191, 36, 0.7);
             border-radius: 14px;
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
         }
 
-        .banner-header-art {
+        .banner-top-elements {
             position: relative;
-            z-index: 2;
+            z-index: 3;
+            width: 100%;
+        }
+
+        .banner-wish-text {
             font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
             color: #fde047;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             font-weight: 700;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(253, 224, 71, 0.3);
+            margin-bottom: 4px;
         }
 
         .banner-title-card {
-            position: relative;
-            z-index: 2;
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 900;
             font-family: 'Cinzel', serif;
             color: #fff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(251, 191, 36, 0.6);
+            letter-spacing: 0.5px;
+        }
+
+        .banner-subtitle-card {
+            font-size: 11px;
+            color: #e2e8f0;
+            margin-top: 4px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* USER PHOTO WITH AUTOMATIC POSTER ENHANCEMENT FILTER */
+        .user-photo-container {
+            position: relative;
+            z-index: 3;
+            width: 140px;
+            height: 140px;
+            margin: auto 0;
         }
 
         .user-photo-frame {
-            position: relative;
-            z-index: 2;
-            width: 125px;
-            height: 125px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             border: 4px solid #fbbf24;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+            box-shadow: 0 0 35px rgba(251, 191, 36, 0.9), 0 10px 20px rgba(0,0,0,0.7);
             background: #000;
         }
 
@@ -466,33 +454,45 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* Auto Photo Edit & Glow Filter applied for professional look */
+            filter: contrast(1.05) saturate(1.1) brightness(1.02);
+            transition: var(--transition);
         }
 
-        .user-name-banner {
+        /* Bottom Name & Footer Tag */
+        .banner-footer-section {
             position: relative;
-            z-index: 2;
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.8), transparent);
+            z-index: 3;
+            width: 100%;
+        }
+
+        .user-name-badge {
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.85), transparent);
             width: 100%;
             padding: 8px 0;
+            margin-bottom: 4px;
         }
 
         .user-name-display {
-            font-size: 19px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
             color: #fbbf24;
             font-family: 'Cinzel', serif;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
             letter-spacing: 1px;
+        }
+
+        .banner-brand-footer {
+            font-size: 9px;
+            color: #cbd5e1;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .btn-whatsapp {
             background: linear-gradient(135deg, #22c55e, #16a34a);
             color: #fff;
-            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            box-shadow: 0 12px 25px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
         }
 
         .btn-secondary {
@@ -502,11 +502,7 @@
             margin-top: 8px;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Confetti Canvas for Birthday */
+        /* Confetti Canvas */
         #confetti-canvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -522,7 +518,7 @@
     <canvas id="confetti-canvas"></canvas>
 
     <div class="app-container">
-        <!-- 1. HERO HEADER & FESTIVAL SELECTION -->
+        <!-- 1. OCCASION SELECTION -->
         <div id="selection-section">
             <header class="hero-header">
                 <div class="brand-box">
@@ -531,117 +527,115 @@
                     </div>
                     <div class="brand-name">UtsavAI</div>
                 </div>
-                <div class="hero-tagline">Celebrate Every Moment ✨</div>
-                <div class="hero-subtitle">Create gorgeous custom festival banners in 1 tap</div>
+                <div class="hero-tagline">Cinematic Festival Poster Generator ✨</div>
+                <div class="hero-subtitle">Auto photo enhancement & festive glowing frames</div>
             </header>
 
             <div class="section-title">
-                Select Occasion <span>2026 Edition</span>
+                Select Festival <span>Pro Edition</span>
             </div>
 
             <div class="festival-grid">
                 <!-- Diwali -->
-                <div class="festival-card" style="--card-accent: #f59e0b; --icon-bg: rgba(245, 158, 11, 0.12);" onclick="selectFestival('DIWALI SPECIAL', '🪔', 'Shubh Deepawali', 'linear-gradient(135deg, #78350f, #451a03, #1e1b4b)')">
-                    <div class="card-icon-box">
-                        <i class="fa-solid fa-fire-flame-curved"></i>
-                    </div>
+                <div class="festival-card" style="--card-accent: #f59e0b; --icon-bg: rgba(245, 158, 11, 0.12);" onclick="selectFestival('DIWALI SPECIAL', '🪔', 'आप सभी को', 'शुभ दीपावली', 'यह दीपावली आपके जीवन में सुख, समृद्धि और नई रोशनी लेकर आए।', 'linear-gradient(135deg, #78350f, #3b1402, #090d16)')">
+                    <div class="card-icon-box"><i class="fa-solid fa-fire-flame-curved"></i></div>
                     <div class="card-info">
                         <h3>Diwali Special</h3>
-                        <p>Shubh Deepawali & Laxmi Puja</p>
+                        <p>Cinematic Diya & Fireworks Theme</p>
                     </div>
                     <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
 
                 <!-- Holi -->
-                <div class="festival-card" style="--card-accent: #ec4899; --icon-bg: rgba(236, 72, 153, 0.12);" onclick="selectFestival('HOLI SPECIAL', '🎨', 'Happy Rang Panchami', 'linear-gradient(135deg, #831843, #500724, #1e1b4b)')">
-                    <div class="card-icon-box">
-                        <i class="fa-solid fa-palette"></i>
-                    </div>
+                <div class="festival-card" style="--card-accent: #ec4899; --icon-bg: rgba(236, 72, 153, 0.12);" onclick="selectFestival('HOLI SPECIAL', '🎨', 'आप सभी को', 'रंगों का त्योहार होली', 'अपनों के साथ खुशियों और रंगों का यह पर्व मंगलमय हो।', 'linear-gradient(135deg, #831843, #4c0519, #090d16)')">
+                    <div class="card-icon-box"><i class="fa-solid fa-palette"></i></div>
                     <div class="card-info">
                         <h3>Holi Celebration</h3>
-                        <p>Colors of Joy & Happiness</p>
+                        <p>Vibrant Color Splash Theme</p>
                     </div>
                     <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
 
                 <!-- Independence Day -->
-                <div class="festival-card" style="--card-accent: #10b981; --icon-bg: rgba(16, 185, 129, 0.12);" onclick="selectFestival('INDEPENDENCE DAY', '🇮🇳', 'Jai Hind • Vande Mataram', 'linear-gradient(135deg, #14532d, #064e3b, #0f172a)')">
-                    <div class="card-icon-box">
-                        <i class="fa-solid fa-flag"></i>
-                    </div>
+                <div class="festival-card" style="--card-accent: #10b981; --icon-bg: rgba(16, 185, 129, 0.12);" onclick="selectFestival('INDEPENDENCE DAY', '🇮🇳', 'समस्त देशवासियों को', 'स्वतंत्रता दिवस की बधाई', 'आइए देश के लिए समर्पित होकर प्रगति के पथ पर आगे बढ़ें।', 'linear-gradient(135deg, #14532d, #064e3b, #090d16)')">
+                    <div class="card-icon-box"><i class="fa-solid fa-flag"></i></div>
                     <div class="card-info">
                         <h3>Independence Day</h3>
-                        <p>Proud Indian Heritage</p>
+                        <p>Tiranga Patriotic Theme</p>
                     </div>
                     <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
 
                 <!-- New Year -->
-                <div class="festival-card" style="--card-accent: #3b82f6; --icon-bg: rgba(59, 130, 246, 0.12);" onclick="selectFestival('NEW YEAR', '✨', 'Welcome New Year', 'linear-gradient(135deg, #1e3a8a, #172554, #0f172a)')">
-                    <div class="card-icon-box">
-                        <i class="fa-solid fa-champagne-glasses"></i>
-                    </div>
+                <div class="festival-card" style="--card-accent: #3b82f6; --icon-bg: rgba(59, 130, 246, 0.12);" onclick="selectFestival('NEW YEAR', '✨', 'आप सभी को नव वर्ष की', 'हार्दिक शुभकामनाएं', 'नया साल आपके जीवन में ढेरों सफलता और खुशियां लाए।', 'linear-gradient(135deg, #1e3a8a, #111827, #090d16)')">
+                    <div class="card-icon-box"><i class="fa-solid fa-champagne-glasses"></i></div>
                     <div class="card-info">
-                        <h3>New Year</h3>
-                        <p>Fresh Beginnings & Success</p>
+                        <h3>New Year 2026</h3>
+                        <p>Celebration & Success Theme</p>
                     </div>
                     <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
 
                 <!-- Birthday Special -->
-                <div class="festival-card" style="--card-accent: #8b5cf6; --icon-bg: rgba(139, 92, 246, 0.12);" onclick="selectFestival('BIRTHDAY SPECIAL', '🎂', 'Happy Birthday To You', 'linear-gradient(135deg, #581c87, #3b0764, #0f172a)')">
-                    <div class="card-icon-box">
-                        <i class="fa-solid fa-cake-candles"></i>
-                    </div>
+                <div class="festival-card" style="--card-accent: #8b5cf6; --icon-bg: rgba(139, 92, 246, 0.12);" onclick="selectFestival('BIRTHDAY SPECIAL', '🎂', 'विशेष अवसर पर', 'जन्मदिन की बधाई', 'ईश्वर आपको उत्तम स्वास्थ्य और दीर्घायु प्रदान करें।', 'linear-gradient(135deg, #581c87, #2e1065, #090d16)')">
+                    <div class="card-icon-box"><i class="fa-solid fa-cake-candles"></i></div>
                     <div class="card-info">
                         <h3>Birthday Special</h3>
-                        <p>Make Your Day Memorable</p>
+                        <p>Confetti & Celebration Theme</p>
                     </div>
                     <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
             </div>
         </div>
 
-        <!-- 2. DETAILS INPUT FORM SECTION -->
+        <!-- 2. DETAILS FORM -->
         <div id="form-section" class="hidden">
-            <a class="back-link" onclick="goBackToSelection()"><i class="fa-solid fa-arrow-left"></i> Choose Another Occasion</a>
-            <div class="form-heading" id="form-heading-title">Customize Banner</div>
+            <a class="back-link" onclick="goBackToSelection()"><i class="fa-solid fa-arrow-left">Back</i></a>
+            <div class="form-heading" id="form-heading-title">Customize Poster</div>
             
             <form id="bannerForm">
                 <div class="form-group">
                     <label>Aapka Naam (Your Name)</label>
-                    <input type="text" id="userName" placeholder="e.g. Mahendra / Rohit" required autocomplete="off">
+                    <input type="text" id="userName" placeholder="Jaise: Mahendra" required autocomplete="off">
                 </div>
 
                 <div class="form-group">
                     <label>Aapki Photo (Upload Image)</label>
                     <div class="file-box" onclick="document.getElementById('userPhoto').click()">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
-                        <p id="file-label">Tap to upload your clear photo</p>
+                        <p id="file-label">Photo upload karein (Auto Glow Filter)</p>
                         <input type="file" id="userPhoto" accept="image/*" required onchange="previewImageName()">
                     </div>
                 </div>
 
                 <button type="submit" class="btn-primary">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Pro Banner
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Pro Poster
                 </button>
             </form>
         </div>
 
-        <!-- 3. GENERATED BANNER PREVIEW SECTION -->
+        <!-- 3. CINEMATIC PREVIEW -->
         <div id="preview-section" class="hidden">
-            <div class="preview-title-main">🎉 Your Pro Banner is Ready!</div>
+            <div class="preview-title-main">🔥 Aapka Poster Taiyar Hai!</div>
             
             <div class="banner-preview-box" id="bannerCard">
-                <div class="banner-header-art" id="banner-tagline">Shubh Deepawali</div>
-                <div class="banner-title-card" id="preview-title">DIWALI SPECIAL</div>
+                <div class="banner-top-elements">
+                    <div class="banner-wish-text" id="banner-wish">आप सभी को</div>
+                    <div class="banner-title-card" id="banner-title">शुभ दीपावली</div>
+                    <div class="banner-subtitle-card" id="banner-subtitle">यह दीपावली आपके जीवन में सुख, समृद्धि और नई रोशनी लेकर आए।</div>
+                </div>
                 
-                <div class="user-photo-frame">
-                    <img id="preview-img" src="" alt="User Photo">
+                <div class="user-photo-container">
+                    <div class="user-photo-frame">
+                        <img id="preview-img" src="" alt="User Photo">
+                    </div>
                 </div>
 
-                <div class="user-name-banner">
-                    <div class="user-name-display" id="preview-name">Mahendra</div>
+                <div class="banner-footer-section">
+                    <div class="user-name-badge">
+                        <div class="user-name-display" id="preview-name">Mahendra</div>
+                    </div>
+                    <div class="banner-brand-footer">Stay Blessed • Stay Happy</div>
                 </div>
             </div>
 
@@ -659,22 +653,26 @@
         const formSection = document.getElementById('form-section');
         const previewSection = document.getElementById('preview-section');
         const formHeadingTitle = document.getElementById('form-heading-title');
-        const previewTitle = document.getElementById('preview-title');
-        const bannerTagline = document.getElementById('banner-tagline');
+        
+        const bannerWish = document.getElementById('banner-wish');
+        const bannerTitle = document.getElementById('banner-title');
+        const bannerSubtitle = document.getElementById('banner-subtitle');
         const previewName = document.getElementById('preview-name');
         const previewImg = document.getElementById('preview-img');
         const bannerCard = document.getElementById('bannerCard');
         const bannerForm = document.getElementById('bannerForm');
         
-        let selectedCategory = "";
-        let selectedTagline = "";
+        let selectedWish = "";
+        let selectedTitleText = "";
+        let selectedSubText = "";
         let selectedBgGradient = "";
         let uploadedImageUrl = "";
         let isBirthday = false;
 
-        function selectFestival(category, emoji, tagline, gradient) {
-            selectedCategory = emoji + " " + category;
-            selectedTagline = tagline;
+        function selectFestival(category, emoji, wish, title, subtitle, gradient) {
+            selectedWish = emoji + " " + wish;
+            selectedTitleText = title;
+            selectedSubText = subtitle;
             selectedBgGradient = gradient;
             isBirthday = category.includes('BIRTHDAY');
 
@@ -688,7 +686,7 @@
             previewSection.classList.add('hidden');
             selectionSection.classList.remove('hidden');
             bannerForm.reset();
-            document.getElementById('file-label').innerText = "Tap to upload your clear photo";
+            document.getElementById('file-label').innerText = "Photo upload karein (Auto Glow Filter)";
             stopConfetti();
         }
 
@@ -712,8 +710,9 @@
             const name = document.getElementById('userName').value.trim();
             if(!name) return;
 
-            previewTitle.innerText = selectedCategory;
-            bannerTagline.innerText = selectedTagline;
+            bannerWish.innerText = selectedWish;
+            bannerTitle.innerText = selectedTitleText;
+            bannerSubtitle.innerText = selectedSubText;
             previewName.innerText = name;
             bannerCard.style.background = selectedBgGradient;
 
@@ -730,9 +729,8 @@
         });
 
         function shareOnWhatsApp() {
-            const text = `Check out my custom festival banner created on UtsavAI! Create yours here: ${window.location.href}`;
-            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl, '_blank');
+            const text = `Maine apna professional festival poster UtsavAI par banaya hai! Aap bhi yahan bana sakte hain: ${window.location.href}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
         }
 
         // Lightweight Confetti Animation for Birthday

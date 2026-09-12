@@ -2,471 +2,284 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UtsavAI - Master Pro Poster Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Pro Festival Poster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400;700;800&family=Cinzel:wght@700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background: #050b14;
+            background-color: #1a1a1a;
             color: #fff;
+            font-family: sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 10px;
-        }
-
-        .app-card {
-            width: 100%;
-            max-width: 420px;
-            background: #0f172a;
-            border: 2px solid #fbbf24;
-            border-radius: 24px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
-            overflow: hidden;
             padding: 20px;
         }
 
-        .hidden {
-            display: none !important;
+        .controls {
+            width: 100%;
+            max-width: 450px;
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .main-heading {
+        .controls h3 {
+            color: #fbbf24;
+            margin-bottom: 15px;
             text-align: center;
-            color: #fbbf24;
-            font-size: 20px;
-            margin-bottom: 18px;
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
         }
 
-        /* Occasion Grid */
-        .festival-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+        .input-group {
+            margin-bottom: 15px;
         }
 
-        .festival-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            color: white;
-            padding: 20px 10px;
-            border-radius: 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .festival-card:hover {
-            border-color: #fbbf24;
-            background: rgba(251, 191, 36, 0.12);
-            transform: translateY(-3px);
-        }
-
-        .festival-card i {
-            font-size: 28px;
-            margin-bottom: 8px;
-            color: #fbbf24;
-        }
-
-        .festival-card h4 {
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* Form Styling */
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 12px;
-            color: #fbbf24;
-            text-decoration: none;
-            font-size: 13px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-group label {
+        .input-group label {
             display: block;
             margin-bottom: 5px;
             font-size: 12px;
-            color: #94a3b8;
-            font-weight: 600;
-            text-transform: uppercase;
+            color: #ccc;
         }
 
-        .form-group input {
+        .input-group input[type="text"] {
             width: 100%;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #111;
             color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: 0.3s;
         }
 
-        .form-group input:focus {
-            border-color: #fbbf24;
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .file-box {
-            border: 2px dashed rgba(251, 191, 36, 0.5);
-            padding: 18px;
-            text-align: center;
-            border-radius: 12px;
-            cursor: pointer;
-            background: rgba(251, 191, 36, 0.03);
-            transition: 0.3s;
-        }
-
-        .file-box:hover {
-            background: rgba(251, 191, 36, 0.08);
-            border-color: #fbbf24;
-        }
-
-        .file-box p {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 6px;
-        }
-
-        .file-box input {
-            display: none;
-        }
-
-        .btn {
+        .input-group input[type="file"] {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 8px;
+            background: #111;
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        .warning-text {
+            font-size: 11px;
+            color: #fca5a5;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .btn-generate {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #f59e0b, #ea580c);
             border: none;
-            color: #050b14;
-            font-size: 15px;
-            font-weight: 800;
-            border-radius: 12px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
-            transition: 0.3s;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.6);
-        }
-
-        /* ULTIMATE CINEMATIC POSTER PREVIEW */
-        .poster-canvas {
+        /* POSTER CANVAS - MATCHING REFERENCE LAYOUT */
+        .poster-container {
             position: relative;
             width: 100%;
-            height: 520px;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 18px 14px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-            margin-bottom: 16px;
-            border: 3px solid #fbbf24;
+            max-width: 450px;
+            height: 600px; /* Tall poster format */
+            background-image: url('https://images.unsplash.com/photo-1574359670005-7798363a0100?q=80&w=1000&auto=format&fit=crop'); /* High quality Diwali background placeholder */
             background-size: cover;
             background-position: center;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            display: none;
+            border: 2px solid #fbbf24;
         }
 
-        /* Professional Cinematic Lighting Overlays */
-        .poster-canvas::before {
+        /* Lighting Overlay */
+        .poster-container::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(3,7,18,0.7) 0%, rgba(3,7,18,0.2) 40%, rgba(3,7,18,0.95) 85%);
+            background: linear-gradient(to right, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.9) 100%);
             z-index: 1;
-            pointer-events: none;
         }
 
-        .poster-canvas::after {
-            content: '';
+        /* Uploaded Full Body User Image */
+        .user-image {
             position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px dashed rgba(251, 191, 36, 0.5);
-            border-radius: 14px;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .poster-top, .poster-bottom, .poster-center-photo {
-            position: relative;
+            bottom: 0;
+            left: 5%;
+            height: 75%; /* Simulating full standing body */
             z-index: 3;
+            pointer-events: none;
+            filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.8));
         }
 
-        .wish-badge {
-            font-size: 11px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: #fde047;
-            font-weight: 700;
-            margin-bottom: 2px;
+        /* Typography & Content Layout (Right Side) */
+        .poster-content {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 60%;
+            text-align: right;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
-        .poster-title-main {
-            font-size: 26px;
-            font-weight: 900;
-            font-family: 'Cinzel', serif;
+        .wish-top {
+            font-family: 'Anek Devanagari', sans-serif;
+            font-size: 16px;
             color: #fff;
-            text-shadow: 0 3px 12px rgba(0,0,0,0.9), 0 0 25px rgba(251, 191, 36, 0.7);
-            line-height: 1.1;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px #000;
         }
 
-        .poster-subtitle {
-            font-size: 10.5px;
-            color: #e2e8f0;
-            margin-top: 4px;
-            padding: 0 12px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-        }
-
-        /* Advanced Portrait Cutout Frame */
-        .poster-center-photo {
-            width: 155px;
-            height: 195px;
-            margin: auto auto;
-            border-radius: 14px;
-            border: 3px solid #fbbf24;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.85), 0 10px 25px rgba(0,0,0,0.9);
-            background: #000;
-        }
-
-        .poster-center-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: contrast(1.08) saturate(1.15) brightness(1.03);
-        }
-
-        /* Bottom Name Box */
-        .name-wrapper {
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.9), transparent);
-            padding: 8px 0;
-            width: 100%;
-            margin-bottom: 4px;
-        }
-
-        .poster-name {
-            font-size: 22px;
+        .main-title {
+            font-family: 'Anek Devanagari', sans-serif;
+            font-size: 60px;
             font-weight: 800;
             color: #fbbf24;
+            line-height: 1;
+            text-shadow: 3px 3px 0 #b45309, 6px 6px 15px rgba(0,0,0,0.9);
+            margin-bottom: 5px;
+        }
+
+        .sub-title {
+            font-family: 'Anek Devanagari', sans-serif;
+            font-size: 18px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .message-text {
+            font-family: 'Anek Devanagari', sans-serif;
+            font-size: 12px;
+            color: #e2e8f0;
+            text-align: right;
+            line-height: 1.4;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        /* Brush Stroke Nameplate Style */
+        .name-badge {
+            background-color: #fbbf24;
+            padding: 10px 25px;
+            transform: rotate(-3deg);
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.6);
+            /* Creating a rough edge shape to mimic brush stroke */
+            clip-path: polygon(2% 10%, 98% 0%, 100% 90%, 0% 100%);
+            margin-bottom: 20px;
+        }
+
+        .name-badge span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            color: #78350f;
+            display: block;
+            transform: rotate(3deg); /* Counter-rotate text */
+        }
+
+        .footer-english {
             font-family: 'Cinzel', serif;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-            letter-spacing: 1px;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 2px 2px 5px #000;
         }
 
-        .brand-footer {
-            font-size: 9px;
+        .footer-english small {
+            font-family: sans-serif;
+            font-size: 8px;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #cbd5e1;
-            font-weight: 600;
+            display: block;
+            margin-top: 4px;
+            color: #fbbf24;
         }
 
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
-            color: #fff;
-        }
-
-        .secondary-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            margin-top: 8px;
-            box-shadow: none;
-        }
     </style>
 </head>
 <body>
 
-    <div class="app-card">
-        <!-- 1. FESTIVAL SELECTION -->
-        <div id="selection-section">
-            <div class="main-heading">✨ Master Pro Poster Studio</div>
-            <div class="festival-grid">
-                <div class="festival-card" onclick="selectFestival('DIWALI SPECIAL', '🪔', 'आप सभी को', 'शुभ दीपावली', 'यह दीपावली आपके जीवन में सुख, समृद्धि और नई रोशनी लेकर आए।', 'linear-gradient(135deg, #78350f, #3b1402, #050b14)')">
-                    <i class="fa-solid fa-fire-flame-curved"></i>
-                    <h4>Diwali Special</h4>
-                </div>
-                <div class="festival-card" onclick="selectFestival('HOLI SPECIAL', '🎨', 'आप सभी को', 'रंगों का त्योहार होली', 'अपनों के साथ खुशियों और रंगों का यह पर्व मंगलमय हो।', 'linear-gradient(135deg, #831843, #4c0519, #050b14)')">
-                    <i class="fa-solid fa-palette"></i>
-                    <h4>Holi Celebration</h4>
-                </div>
-                <div class="festival-card" onclick="selectFestival('INDEPENDENCE DAY', '🇮🇳', 'समस्त देशवासियों को', 'स्वतंत्रता दिवस की बधाई', 'आइए देश के लिए समर्पित होकर प्रगति के पथ पर आगे बढ़ें।', 'linear-gradient(135deg, #14532d, #064e3b, #050b14)')">
-                    <i class="fa-solid fa-flag"></i>
-                    <h4>Independence</h4>
-                </div>
-                <div class="festival-card" onclick="selectFestival('NEW YEAR', '✨', 'आप सभी को नव वर्ष की', 'हार्दिक शुभकामनाएं', 'नया साल आपके जीवन में ढेरों सफलता और खुशियां लाए।', 'linear-gradient(135deg, #1e3a8a, #111827, #050b14)')">
-                    <i class="fa-solid fa-champagne-glasses"></i>
-                    <h4>New Year 2026</h4>
-                </div>
-                <div class="festival-card" onclick="selectFestival('BIRTHDAY SPECIAL', '🎂', 'विशेष अवसर पर', 'जन्मदिन की बधाई', 'ईश्वर आपको उत्तम स्वास्थ्य और दीर्घायु प्रदान करें।', 'linear-gradient(135deg, #581c87, #2e1065, #050b14)')" style="grid-column: span 2;">
-                    <i class="fa-solid fa-cake-candles"></i>
-                    <h4>Birthday Special</h4>
-                </div>
-            </div>
+    <div class="controls" id="controlPanel">
+        <h3>Pro Layout Generator</h3>
+        <div class="input-group">
+            <label>Aapka Naam</label>
+            <input type="text" id="userNameInput" placeholder="Jaise: Mahendra">
         </div>
-
-        <!-- 2. DETAILS FORM -->
-        <div id="form-section" class="hidden">
-            <a class="back-link" onclick="goBackToSelection()"><i class="fa-solid fa-arrow-left"></i> Back to Festivals</a>
-            <div class="main-heading" id="form-heading-title">Customize Poster</div>
-            
-            <form id="bannerForm">
-                <div class="form-group">
-                    <label>Aapka Naam (Your Name)</label>
-                    <input type="text" id="userName" placeholder="Jaise: Mahendra" required autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                    <label>Aapki Photo (Portrait Best)</label>
-                    <div class="file-box" onclick="document.getElementById('userPhoto').click()">
-                        <i class="fa-solid fa-cloud-arrow-up fa-2x" style="color: #fbbf24;"></i>
-                        <p id="file-label">Photo upload karein (Pro Frame)</p>
-                        <input type="file" id="userPhoto" accept="image/*" required onchange="previewImageName()">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Master Poster
-                </button>
-            </form>
+        <div class="input-group">
+            <label>Aapki Photo (Transparent PNG)</label>
+            <input type="file" id="userPhotoInput" accept="image/*">
+            <span class="warning-text">*Best result ke liye background hatayi hui (PNG) photo upload karein.</span>
         </div>
+        <button class="btn-generate" onclick="generatePoster()">Create Cinematic Poster</button>
+    </div>
 
-        <!-- 3. PREVIEW & SHARING -->
-        <div id="preview-section" class="hidden">
-            <div class="main-heading">🔥 Poster Tayar Hai!</div>
+    <!-- Generated Poster -->
+    <div class="poster-container" id="posterCanvas">
+        <img src="" class="user-image" id="displayImage" alt="User Cutout">
+        
+        <div class="poster-content">
+            <div class="wish-top">आप सभी को</div>
+            <div class="main-title">दीपावली</div>
+            <div class="sub-title">की हार्दिक शुभकामनाएं</div>
             
-            <div class="poster-canvas" id="posterCanvas">
-                <div class="poster-top">
-                    <div class="wish-badge" id="poster-wish">आप सभी को</div>
-                    <div class="poster-title-main" id="poster-title">शुभ दीपावली</div>
-                    <div class="poster-subtitle" id="poster-subtitle">यह दीपावली आपके जीवन में सुख, समृद्धि और नई रोशनी लेकर आए।</div>
-                </div>
-                
-                <div class="poster-center-photo">
-                    <img id="preview-img" src="" alt="User Photo">
-                </div>
-
-                <div class="poster-bottom">
-                    <div class="name-wrapper">
-                        <div class="poster-name" id="preview-name">Mahendra</div>
-                    </div>
-                    <div class="brand-footer">Exclusive Festival Edition • 2026</div>
-                </div>
+            <div class="message-text">
+                यह दीपावली आपके जीवन में<br>सुख, समृद्धि, खुशियां और<br>नई उम्मीदों की रोशनी लेकर आए।
             </div>
 
-            <button class="btn whatsapp-btn" onclick="shareOnWhatsApp()">
-                <i class="fa-brands fa-whatsapp fa-lg"></i> Share on WhatsApp Status
-            </button>
-            <button class="btn secondary-btn" onclick="goBackToSelection()">
-                <i class="fa-solid fa-rotate-left"></i> Create Another Poster
-            </button>
+            <div class="name-badge">
+                <span id="displayName">Mahendra</span>
+            </div>
+
+            <div class="footer-english">
+                HAPPY DIWALI
+                <small>STAY BLESSED • STAY HAPPY</small>
+            </div>
         </div>
     </div>
 
     <script>
-        const selectionSection = document.getElementById('selection-section');
-        const formSection = document.getElementById('form-section');
-        const previewSection = document.getElementById('preview-section');
-        const formHeadingTitle = document.getElementById('form-heading-title');
-        
-        const posterWish = document.getElementById('poster-wish');
-        const posterTitle = document.getElementById('poster-title');
-        const posterSubtitle = document.getElementById('poster-subtitle');
-        const previewName = document.getElementById('preview-name');
-        const previewImg = document.getElementById('preview-img');
-        const posterCanvas = document.getElementById('posterCanvas');
-        const bannerForm = document.getElementById('bannerForm');
-        
-        let selectedWishText = "";
-        let selectedTitleText = "";
-        let selectedSubText = "";
-        let selectedBgGradient = "";
-        let uploadedImageUrl = "";
+        function generatePoster() {
+            const nameInput = document.getElementById('userNameInput').value;
+            const photoInput = document.getElementById('userPhotoInput');
+            const posterCanvas = document.getElementById('posterCanvas');
+            const displayImage = document.getElementById('displayImage');
+            const displayName = document.getElementById('displayName');
 
-        function selectFestival(category, emoji, wish, title, subtitle, gradient) {
-            selectedWishText = emoji + " " + wish;
-            selectedTitleText = title;
-            selectedSubText = subtitle;
-            selectedBgGradient = gradient;
+            if (!nameInput) {
+                alert("Kripya apna naam darj karein");
+                return;
+            }
 
-            formHeadingTitle.innerText = "Create " + category;
-            selectionSection.classList.add('hidden');
-            formSection.classList.remove('hidden');
-        }
-
-        function goBackToSelection() {
-            formSection.classList.add('hidden');
-            previewSection.classList.add('hidden');
-            selectionSection.classList.remove('hidden');
-            bannerForm.reset();
-            document.getElementById('file-label').innerText = "Photo upload karein (Pro Frame)";
-        }
-
-        function previewImageName() {
-            const input = document.getElementById('userPhoto');
-            const label = document.getElementById('file-label');
-            if(input.files && input.files[0]) {
-                label.innerText = "Selected: " + input.files[0].name;
-                label.style.color = "#22c55e";
-
+            if (photoInput.files && photoInput.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    uploadedImageUrl = e.target.result;
+                    displayImage.src = e.target.result;
+                    displayName.innerText = nameInput;
+                    
+                    document.getElementById('controlPanel').style.display = 'none';
+                    posterCanvas.style.display = 'block';
                 }
-                reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(photoInput.files[0]);
+            } else {
+                alert("Kripya apni photo upload karein");
             }
-        }
-
-        bannerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('userName').value.trim();
-            if(!name) return;
-
-            posterWish.innerText = selectedWishText;
-            posterTitle.innerText = selectedTitleText;
-            posterSubtitle.innerText = selectedSubText;
-            previewName.innerText = name;
-            posterCanvas.style.background = selectedBgGradient;
-
-            if(uploadedImageUrl) {
-                previewImg.src = uploadedImageUrl;
-            }
-
-            formSection.classList.add('hidden');
-            previewSection.classList.remove('hidden');
-        });
-
-        function shareOnWhatsApp() {
-            const text = `Maine apna professional festival poster UtsavAI par banaya hai! Aap bhi yahan bana sakte hain: ${window.location.href}`;
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
         }
     </script>
+
 </body>
 </html>
